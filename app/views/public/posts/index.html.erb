@@ -1,0 +1,18 @@
+<div class="container">
+  
+<% @posts.each do |posts| %>
+<div class="card" style="width: 18rem;">
+  <%= image_tag posts.get_image(200,200), class: "img-fluid" %>
+  <div class="card-body">
+    <%= image_tag posts.user.get_profile_image(100,100), class: "img-fluid" %>
+    <h5 class="card-title"><%= posts.title %></h5>
+    <p class="card-text"><%= posts.content %></p>
+    <%= link_to "詳細画面へ", post_path(posts.id), class: 'btn btn-primary' %>
+  </div>
+</div>
+<% end %>
+
+</div>
+      
+      
+   

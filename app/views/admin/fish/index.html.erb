@@ -1,0 +1,12 @@
+<div class="container">
+  <div class="row">
+    <% @fishes.each do |fish| %>
+      <%= fish.fish_name %>
+      <%= link_to "編集", edit_admin_fish_path(fish.id) %>
+      <%= link_to "削除", admin_fish_path(fish.id), method: :delete %>
+    <% end %>
+  </div>
+  <div class="row">
+    <%= link_to "新規作成", new_admin_fish_path %>
+  </div>
+</div>
