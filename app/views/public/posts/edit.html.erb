@@ -1,0 +1,18 @@
+<div class="container">
+  
+  <%= form_with model: @post do |f| %>
+  <div class="row d-flex flex-column">
+    <li><label>画像</label><%= f.file_field :image, accept: "image/*" %></li>
+    <li><label>タイトル</label><%= f.text_field :title %></li>
+    <li><label>内容</label><%= f.text_area :content %></li>
+    <li><label>レシピ</label><%= f.text_area :recipe %></li>
+    <li><label>捌き方</label><%= f.text_area :method %></li>
+    <li><label>魚種</label><%= f.collection_select :fish_id, Fish.all, :id, :fish_name , { include_blank: '選択してください'}, {class: 'form-controll', required: true } %></li>
+  </div>
+  <div class="row">
+    <div class="col-4"></div>
+    <div class="col-4"><%= f.submit '変更を保存する' %></div>
+    <div class="col-4"></div>
+  </div>
+  <% end %>
+</div>

@@ -6,12 +6,20 @@
     </div>
     
     <div class="col-8">
-      <div class="card border-dark mb-3" style="max-width: 18rem;">
-        <div class="card-header">画像</div>
-        <div class="card-body text-dark">
-          <%= image_tag @post.get_image(400,400), class: "img-fluid" %>
+      <div class="d-flex flex-row">
+        
+        <div class="card border-dark mb-3" style="max-width: 18rem;">
+          <div class="card-header">画像</div>
+          <div class="card-body text-dark">
+            <%= image_tag @post.get_image(400,400), class: "img-fluid" %>
+          </div>
         </div>
+        <div class="ml-5">
+          <%= link_to "編集する", edit_post_path(@post.id) %>
+        </div>
+      
       </div>
+      
       <div class="card w-75 mb-3">
         <div class="card-body">
           <h5 class="card-title">内容</h5>
@@ -30,6 +38,39 @@
           <p class="card-text"><%= @post.method %></p>
         </div>
       </div>
+      
+      <% if @post.liked_by?(current_user) %>
+        <p>
+          <%= link_to post_likes_path(@post), method: :delete do %>
+            ♥<%= @post.likes.count %> いいね
+          <% end %>
+        </p>
+        <% else %>
+        <p>
+          <%= link_to post_likes_path(@post), method: :post do %>
+            ♡<%= @post.likes.count %> いいね
+          <% end %>
+        </p>
+      <% end %>
+      
+      <div>
+        <p>コメント件数：<%= @post.post_comments.count %></p>
+        <% @post.post_comments.each do |post_comment| %>
+          <p><%= image_tag post_comment.user.get_profile_image(100,100) %></p>
+          <%= post_comment.user.last_name %>
+          <%= post_comment.created_at.strftime('%Y/%m/%d') %><%= post_comment.comment %>
+          <% if post_comment.user == current_user %>
+            <%= link_to "削除", post_post_comment_path(post_comment.post, post_comment), method: :delete %>
+          <% end %>
+        <% end %>
+      </div>
+      <div>
+        <%= form_with model: [@post, @post_comment] do |f| %>
+          <%= f.text_area :comment, rows: '3', size: '70', placeholder: "コメントをここに" %><br>
+          <%= f.submit "送信する" %>
+        <% end %>
+      </div>
+      
     </div>
   </div>
 

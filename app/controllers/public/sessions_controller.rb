@@ -31,11 +31,11 @@ class Public::SessionsController < Devise::SessionsController
   #退会しているかを判断するメソッド
   def user_state 
     #入力されたemailからアカウントを１件取得
-    @user = User.find_by(email: params[:customer][:email])
+    @user = User.find_by(email: params[:user][:email])
     #アカウントを取得できなかった場合、このメソッドを終了する
     return if !@user
     #取得したアカウントのパスワードと入力されたパスワードが一致しているかを判別
-    if@user.valid_password?(params[:customer][:password])
+    if@user.valid_password?(params[:user][:password])
       #もし上記の条件が一致していた場合、次の処理を行う
       #該当アカウントのis_deleteカラムの値がtrueの場合、次の処理を行う
       if @user.is_deleted == true

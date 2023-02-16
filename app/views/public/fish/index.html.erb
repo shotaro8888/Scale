@@ -1,0 +1,7 @@
+<div class="container">
+  <div class="row">
+    <% @fishes.each do |fish| %>
+    <%= link_to fish_path(fish.id) do %><%= fish.fish_name %><% end %>
+    <% end %>
+  </div>
+</div>

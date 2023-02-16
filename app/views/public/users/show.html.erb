@@ -3,9 +3,10 @@
   <div class="row">
     <div class="col-4">
       <%= render 'list', user: @user %>
-      <%= link_to "ユーザ情報を編集する", edit_user_path(current_user.id) %>
+      <%= link_to "ユーザ情報を編集する", edit_user_path(current_user.id) %><br>
+      <%= link_to "新規投稿する", new_post_path %>
     </div>
-    <div class="col-8">
+    <div class="col-8 d-flex flex-row">
       <% @posts.each do |posts| %>
       <div class="card" style="width: 18rem;">
         <%= image_tag posts.get_image(400,400), class: "img-fluid" %>
@@ -13,6 +14,7 @@
           <%= image_tag posts.user.get_profile_image(100,100), class: "img-fluid" %>
           <h5 class="card-title"><%= posts.title %></h5>
           <p class="card-text"><%= posts.content %></p>
+          <p class="card-text"><%= link_to "#{posts.post_comments.count} コメント", post_path(posts.id) %></p>
           <%= link_to "詳細画面へ", post_path(posts.id), class: 'btn btn-primary' %>
         </div>
       </div>

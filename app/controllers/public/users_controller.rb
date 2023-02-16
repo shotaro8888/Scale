@@ -17,9 +17,19 @@ class Public::UsersController < ApplicationController
   end
   
   def withdrawal
+    @user = current_user
+    if @user.email == 'guest@example.com'
+      reset_session
+      redirect_to :root
+    else
+      @user.update(is_deleted: true)
+      reset_session
+      redirect_to root_path
+    end
   end
     
   def index
+    @users = User.all
   end
 
   def show

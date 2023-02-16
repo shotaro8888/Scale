@@ -1,5 +1,6 @@
 class Fish < ApplicationRecord
   belongs_to :genre
+  has_many :posts
   has_one_attached :image
 
   def get_image(width, height)

@@ -1,0 +1,12 @@
+<div class="container">
+  <div class="row">
+    <%= @fish.fish_name %>
+    <%= image_tag @fish.get_image(200,200), class: "img-fluid" %>
+    <%= @fish.introduction %>
+  </div>
+  <div class="row">
+    <% @posts.each do |posts| %>
+    <%= link_to post_path(posts.id) do %><%= posts.title %><% end %>
+    <% end %>
+  </div>
+</div>

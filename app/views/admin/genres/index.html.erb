@@ -7,10 +7,21 @@
     <% end %>
   </div>
   <div class="row">
-    <% @genres.each do |genre| %>
-    <%= genre.name %>
-    <%= link_to "編集する", edit_admin_genre_path(genre.id) %>
-    <%= link_to "削除する", admin_genre_path(genre.id), method: :delete %>
-    <% end %>
+    <table class="table">
+      <thead>
+        <tr>
+          <th>ジャンル名</th>
+          <th></th>
+        </tr>
+      </thead>
+      <% @genres.each do |genre| %>
+      <tbody>
+        <tr>
+          <td><%= genre.name %></td>
+          <td><%= link_to "編集する", edit_admin_genre_path(genre.id) %><%= link_to "削除する", admin_genre_path(genre.id), method: :delete %></td>
+        </tr>
+      </tbody>
+      <% end %>
+    </table>
   </div>
 </div>

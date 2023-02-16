@@ -1,17 +1,28 @@
 <div class="container">
-  
-<% @posts.each do |posts| %>
-<div class="card" style="width: 18rem;">
-  <%= image_tag posts.get_image(200,200), class: "img-fluid" %>
-  <div class="card-body">
-    <%= image_tag posts.user.get_profile_image(100,100), class: "img-fluid" %>
-    <h5 class="card-title"><%= posts.title %></h5>
-    <p class="card-text"><%= posts.content %></p>
-    <%= link_to "詳細画面へ", post_path(posts.id), class: 'btn btn-primary' %>
-  </div>
-</div>
-<% end %>
+  <div class="row">
+    <h3>投稿を検索</h3>
 
+    <%= form_tag({controller:"posts",action:"index"}, method: :get) do %>
+     <%= text_field_tag :search %>
+     <%= submit_tag '検索する' %>
+    <% end %>
+  </div>
+  <div class="row d-flex flex-row"> 
+    <% @posts.each do |posts| %>
+    <div class="ml-3">
+    <div class="card" style="width: 18rem;">
+      <%= image_tag posts.get_image(200,200), class: "img-fluid" %>
+      <div class="card-body">
+        <%= image_tag posts.user.get_profile_image(100,100), class: "img-fluid" %>
+        <h5 class="card-title"><%= posts.title %></h5>
+        <p class="card-text"><%= posts.content %></p>
+        <p class="card-text"><%= link_to "#{posts.post_comments.count} コメント", post_path(posts.id) %></p>
+        <%= link_to "詳細画面へ", post_path(posts.id), class: 'btn btn-primary' %>
+      </div>
+    </div>
+    </div>
+    <% end %>
+  </div>
 </div>
       
       
