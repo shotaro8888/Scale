@@ -4,13 +4,35 @@
   </div>
   <div class="row">
     <div class="col-3">
-      魚種一覧
+      <table class="table table-bordered table-dark">
+        <thead>
+          <tr><th>魚種一覧</th></tr>
+        </thead>
+        <% @fishes.each do |fish| %>
+        <tbody>
+          <tr>
+            <td><%= fish.fish_name %></td>
+          </tr>
+        </tbody>
+        <% end %>
+      </table>
     </div>
     <div class="col-6">
-      イラスト
+      <%= image_tag 'umi_haikei.jpg', class: "img-fluid" %>
     </div>
     <div class="col-3">
-      投稿一覧
+      <table class="table table-bordered table-dark">
+        <thead>
+          <tr><th>投稿一覧</th></tr>
+        </thead>
+        <% @posts.each do |posts| %>
+        <tbody>
+          <tr>
+            <td><%= posts.title %></td>
+          </tr>
+        </tbody>
+        <% end %>
+      </table>
     </div>
   </div>
 </div>

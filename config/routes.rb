@@ -26,7 +26,10 @@ Rails.application.routes.draw do
       resources :post_comments, only: [:create, :destroy]
       get :search, on: :collection
     end
-    resources :users, only: [:edit, :update, :index, :show]
+    resources :users, only: [:edit, :update, :index, :show] do
+      get 'users/data' => 'users#data'
+      get :likes, on: :collection
+    end
     resources :fish, only: [:index, :show]
     get 'users/data' => 'users#data'
     get 'users/unsubscribe' => 'users#unsubscribe'

@@ -16,6 +16,11 @@
         </div>
         <div class="ml-5">
           <%= link_to "編集する", edit_post_path(@post.id) %>
+          
+          <%# @post.fish.each do |fish| %>
+            <%= @post.fish.fish_name %>
+          <%# end %>
+          
         </div>
       
       </div>

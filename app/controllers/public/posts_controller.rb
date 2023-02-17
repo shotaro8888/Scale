@@ -13,9 +13,17 @@ class Public::PostsController < ApplicationController
   
   def index
     if params[:search] == nil
-    @posts = Post.all
+      @posts = params[:fish_id].present? ? Fish.find(params[:fish_id]).posts : Post.all
+      if params[:fish_id].present? 
+        @posts = Fish.find(params[:fish_id]).posts
+        # byebug
+      else
+        @posts = Post.all
+      end
+    
+    
     elsif params[:search] == ''
-    @posts = Post.all
+    @posts = params[:fish_id].present? ? Fish.find(params[:fish_id]).posts : Post.all
     else
     @posts = Post.where("title LIKE ?", '%' + params[:search] + '%')
     end
@@ -42,7 +50,7 @@ class Public::PostsController < ApplicationController
   
 private
   def post_params
-    params.require(:post).permit(:fish_id, :user_id, :title, :content, :recipe, :method, :image)
+    params.require(:post).permit(:fish_id, :user_id, :title, :content, :recipe, :method, :image, tag_ids: [])
   end
   
 end

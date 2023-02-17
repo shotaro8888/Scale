@@ -1,7 +1,20 @@
 <div class="container">
   <div class="row">
-    <% @fishes.each do |fish| %>
-    <%= link_to fish_path(fish.id) do %><%= fish.fish_name %><% end %>
-    <% end %>
+    <div class="col-4"></div>
+    <div class="col-4">
+      <table class="table table-bordered table-dark">
+        <thead>
+          <tr><th>魚種一覧</th></tr>
+        </thead>
+        <% @fishes.each do |fish| %>
+        <tbody>
+          <tr>
+            <td><%= link_to fish_path(fish.id) do %><%= fish.fish_name %><% end %></td>
+          </tr>
+        </tbody>
+        <% end %>
+      </table>
+    </div>
+    <div class="col-4"></div>
   </div>
 </div>

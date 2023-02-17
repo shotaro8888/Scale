@@ -1,6 +1,14 @@
 class Public::UsersController < ApplicationController
   
-  def data
+  def index
+    @users = User.all
+  end
+
+  def show
+    @user = current_user
+    @posts = @user.posts
+    likes = Like.where(user_id: current_user.id).pluck(:post_id)
+    @likes_list = Post.find(likes)
   end
   
   def edit
@@ -28,15 +36,13 @@ class Public::UsersController < ApplicationController
     end
   end
     
-  def index
-    @users = User.all
-  end
-
-  def show
-    @user = User.find(params[:id])
+  def data
+    @user = current_user
     @posts = @user.posts
-  end
-  
+    likes = Like.where(user_id: current_user.id).pluck(:post_id)
+    @likes_list = Post.find(likes)
+  end  
+    
 private
   def user_params
     params.require(:user).permit(:last_name, :first_name, :last_name_kana, :first_name_kana, :email, :telephone_number, :is_deleted, :profile_image)

@@ -1,6 +1,7 @@
 class Fish < ApplicationRecord
   belongs_to :genre
-  has_many :posts
+  # has_many :post_tags, dependent: :destroy
+  has_many :posts#, through: :post_tags
   has_one_attached :image
 
   def get_image(width, height)

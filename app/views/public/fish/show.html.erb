@@ -1,8 +1,21 @@
 <div class="container">
   <div class="row">
-    <%= @fish.fish_name %>
-    <%= image_tag @fish.get_image(200,200), class: "img-fluid" %>
-    <%= @fish.introduction %>
+    <div class="col-5">
+      <h1><%= @fish.fish_name %></h1>
+      <%= image_tag @fish.get_image(500,500), class: "img-fluid" %>
+    </div>
+    <div class="col-7">
+      <div class="card w-75 mb-3 mt-3">
+        <div class="card-body">
+          <h5 class="card-title">豆知識</h5>
+          <p class="card-text"><%= @fish.introduction %></p>
+          <h5 class="card-title">・旬</h5>
+          <p class="card-text"><%= @fish.introduction %></p>
+          <h5 class="card-title">・おすすめの食べ方</h5>
+          <p class="card-text"><%= @fish.introduction %></p>
+        </div>
+      </div>
+    </div>
   </div>
   <div class="row">
     <% @posts.each do |posts| %>
