@@ -15,6 +15,10 @@ Rails.application.routes.draw do
     resources :fish, only: [:index, :new, :create, :show, :edit, :update, :destroy]
     resources :genres, only: [:index, :create, :edit, :update, :destroy]
     resources :users, only: [:index, :show, :edit, :update]
+    resources :post_comments, only: [:destroy]
+    resources :posts, only: [:index, :show] do
+      resources :post_comments, only: [:destroy]
+    end
   end
   
   #ユーザ側のルーティング設定

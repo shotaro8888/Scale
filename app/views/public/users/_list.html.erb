@@ -1,12 +1,15 @@
 <div class="card" style="width: 18rem;">
   <%= image_tag user.get_profile_image(300,300) %>
   <div class="card-body">
-    <h5 class="card-title">ユーザ情報</h5>
+    <h5 class="card-title"><%= user.last_name %><%= user.first_name %></h5>
     <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
   </div>
+  <% if user == current_user %>
   <ul class="list-group list-group-flush">
     <li class="list-group-item"><%= link_to "ユーザ情報を編集する", edit_user_path(current_user.id) %></li>
     <li class="list-group-item"><%= link_to "新規投稿する", new_post_path %></li>
     <li class="list-group-item"><%= link_to "いいねした投稿を見る", user_users_data_path(user.id) %></li>
   </ul>
+  <% else %>
+  <% end %>
 </div>

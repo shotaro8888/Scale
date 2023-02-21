@@ -1,7 +1,7 @@
 class Public::FishController < ApplicationController
   
   def index
-    @fishes = Fish.all
+    @fishes = Fish.page(params[:page]).per(10)
   end
   
   def show
