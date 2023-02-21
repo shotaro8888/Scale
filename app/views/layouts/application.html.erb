@@ -7,10 +7,11 @@
     <%= csp_meta_tag %>
 
     <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
-  <body class="bg-secondary">
+  <body class="background_image">
     <header class="sticky-top">
       <nav class="navbar navbar-expand-md navbar-dark bg-dark text-white">
         <a>
@@ -23,93 +24,98 @@
            <ul class="navbar-nav ml-auto">
             <% if admin_signed_in? %>
               <% if request.fullpath.include? "/admin" %>
-              <li class="nav-item">
+              <li class="nav-item ml-3">
                 <button class="btn btn-outline-secondary" type="button">
                 <%= link_to "ログアウト", destroy_admin_session_path, method: :delete, class: 'text-white' %>
                 </button>
               </li>
-              <li class="nav-item">
+              <li class="nav-item ml-3">
                 <button class="btn btn-outline-secondary" type="button">
                 <%= link_to "魚種一覧", admin_fish_index_path, class: 'text-white' %>
                 </button>
               </li>
-              <li class="nav-item">
+              <li class="nav-item ml-3">
                 <button class="btn btn-outline-secondary" type="button">
                 <%= link_to "ジャンル一覧", admin_genres_path, class: 'text-white' %>
                 </button>
               </li>
-              <li class="nav-item">
+              <li class="nav-item ml-3">
                 <button class="btn btn-outline-secondary" type="button">
                 <%= link_to "ユーザ一覧", admin_users_path, class: 'text-white' %>
                 </button>
               </li>
-              <li class="nav-item">
+              <li class="nav-item ml-3">
                 <button class="btn btn-outline-secondary" type="button">
                 <%= link_to "コメント一覧", root_path, class: 'text-white' %>
                 </button>
               </li>
               <% else %>
-              <li class="nav-item">
+              <li class="nav-item ml-3">
                 <button class="btn btn-outline-secondary" type="button">
                 <%= link_to "About", about_path, class: 'text-white' %>
                 </button>
               </li>
-              <li class="nav-item">
+              <li class="nav-item ml-3">
                 <button class="btn btn-outline-secondary" type="button">
                 <%= link_to "新規登録", new_user_registration_path, class: 'text-white' %>
                 </button>
               </li>
-              <li class="nav-item">
+              <li class="nav-item ml-3">
                 <button class="btn btn-outline-secondary" type="button">
                 <%= link_to "ログイン", new_user_session_path, class: 'text-white' %>
                 </button>
               </li>
-              <li class="nav-item">
+              <li class="nav-item ml-3">
                 <button class="btn btn-outline-secondary" type="button">
                 <%= link_to "ユーザ一覧", admin_users_path, class: 'text-white' %>
                 </button>
               </li>
               <% end %>
             <% elsif user_signed_in? %>
-            <li class="nav-item">
+            <li class="nav-item ml-3">
               <button class="btn btn-outline-secondary" type="button">
               <%= link_to "マイページ", user_path(current_user.id), class: 'text-white' %>
               </button>
             </li>
-            <li class="nav-item">
+            <li class="nav-item ml-3">
               <button class="btn btn-outline-secondary" type="button">
               <%= link_to "魚種一覧", fish_index_path, class: 'text-white' %>
               </button>
             </li>
-            <li class="nav-item">
+            <li class="nav-item ml-3">
               <button class="btn btn-outline-secondary" type="button">
               <%= link_to "投稿一覧", posts_path, class: 'text-white' %>
               </button>
             </li>
-            <li class="nav-item">
+            <li class="nav-item ml-3">
               <button class="btn btn-outline-secondary" type="button">
               <%= link_to "ユーザ一覧", users_path, class: 'text-white' %>
               </button>
             </li>
-            <li class="nav-item">
+            <li class="nav-item ml-3">
               <button class="btn btn-outline-secondary" type="button">
               <%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: 'text-white' %>
               </button>
             </li>
           <% else %>
-            <li class="nav-item">
+            <li class="nav-item ml-3">
               <button class="btn btn-outline-secondary" type="button">
               <%= link_to "About", about_path, class: 'text-white' %>
               </button>
             </li>
-            <li class="nav-item">
+            <li class="nav-item ml-3">
               <button class="btn btn-outline-secondary" type="button">
               <%= link_to "新規登録", new_user_registration_path, class: 'text-white' %>
               </button>
             </li>
-            <li class="nav-item">
+            <li class="nav-item ml-3">
               <button class="btn btn-outline-secondary" type="button">
               <%= link_to "ログイン", new_user_session_path, class: 'text-white' %>
+              </button>
+            </li>
+            <li class="nav-item ml-3">
+              <button class="btn btn-outline-secondary" type="button">
+              <%= link_to 'ゲストログイン（閲覧用）', public_guest_sign_in_path, method: :post, class: 'text-white' %>
               </button>
             </li>
           <% end %>

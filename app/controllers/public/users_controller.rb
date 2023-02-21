@@ -6,7 +6,7 @@ class Public::UsersController < ApplicationController
 
   def show
     @user = current_user
-    @posts = @user.posts
+    @posts = @user.posts.page(params[:page]).per(3)
     likes = Like.where(user_id: current_user.id).pluck(:post_id)
     @likes_list = Post.find(likes)
   end

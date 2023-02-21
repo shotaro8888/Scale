@@ -1,28 +1,33 @@
 <div class="container">
+  
   <div class="row">
-    <h3>投稿を検索</h3>
-
-    <%= form_tag({controller:"posts",action:"index"}, method: :get) do %>
-     <%= text_field_tag :search %>
-     <%= submit_tag '検索する' %>
-    <% end %>
-  </div>
-  <div class="row">
-  <h1>Posts</h1>
-  <%= form_tag posts_path, method: :get, class: 'boards__searchForm' do %>
+    
+    <div class="col-5 mx-auto mt-3">
+      <p><b>タグで絞り込み検索</b></p>
+      <%= form_tag posts_path, method: :get, class: 'boards__searchForm' do %>
         <%= select_tag :fish_id,
-                       options_from_collection_for_select(Fish.all, :id, :fish_name, params[:fish_id]),
-                       {
-                         prompt: 'タグで絞り込み検索',
-                         onchange: 'submit(this.form);'
-                       }
+          options_from_collection_for_select(Fish.all, :id, :fish_name, params[:fish_id]),
+          {
+            prompt: 'タグで絞り込み検索',
+            onchange: 'submit(this.form);'
+          }
         %>
       <% end %>
+    </div>
+    <div class="col-3"></div>
+    <div class="col-4 mx-auto mt-3">
+      <p><b>投稿を検索</b></p>
+      <%= form_tag({controller:"posts",action:"index"}, method: :get) do %>
+       <%= text_field_tag :search %>
+       <%= submit_tag '検索する', class: 'btn btn-md btn-info' %>
+      <% end %>
+    </div>
   </div>
+  
   <div class="row d-flex flex-row"> 
     <% @posts.each do |posts| %>
     <div class="ml-3 mt-3">
-    <div class="card h-100 w-30">
+    <div class="card" style="width: 18rem;">
       <%= image_tag posts.get_image(300,300), class: "img-fluid" %>
       <div class="card-body">
         <%= image_tag posts.user.get_profile_image(100,100), class: "img-fluid" %>
@@ -35,6 +40,7 @@
     </div>
     <% end %>
   </div>
+  
 </div>
       
       

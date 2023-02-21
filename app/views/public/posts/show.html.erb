@@ -1,6 +1,6 @@
 <div class="container">
   
-  <div class="row">
+  <div class="row mt-3">
     <div class="col-4">
       <%= render 'public/users/list', user: @user %>
     </div>
@@ -9,17 +9,16 @@
       <div class="d-flex flex-row">
         
         <div class="card border-dark mb-3" style="max-width: 18rem;">
-          <div class="card-header">画像</div>
+          <div class="card-header"><%= @post.fish.fish_name %></div>
           <div class="card-body text-dark">
             <%= image_tag @post.get_image(400,400), class: "img-fluid" %>
           </div>
         </div>
         <div class="ml-5">
-          <%= link_to "編集する", edit_post_path(@post.id) %>
-          
-          <%# @post.fish.each do |fish| %>
-            <%= @post.fish.fish_name %>
-          <%# end %>
+          <% if @user == current_user %>
+            <%= link_to "編集する", edit_post_path(@post.id) %>
+          <% else %>
+          <% end %>
           
         </div>
       

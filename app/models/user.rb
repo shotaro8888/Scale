@@ -8,6 +8,13 @@ class User < ApplicationRecord
   has_many :post_comments, dependent: :destroy
   has_many :likes, dependent: :destroy
   
+  validates :last_name, length: {minimum: 2, maximum: 20}, uniqueness: { case_sensitive: false }
+  validates :first_name, length: {minimum: 2, maximum: 20}, uniqueness: { case_sensitive: false }
+  validates :last_name_kana, length: {minimum: 2, maximum: 20}, uniqueness: { case_sensitive: false }
+  validates :first_name_kana, length: {minimum: 2, maximum: 20}, uniqueness: { case_sensitive: false }
+  validates :telephone_number, length: {maximum: 20}
+  validates :email, length: {maximum: 30}
+  
   def self.guest
     find_or_create_by!(email: 'guest@example.com') do |user|
       user.password = SecureRandom.urlsafe_base64

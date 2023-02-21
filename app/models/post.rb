@@ -8,6 +8,13 @@ class Post < ApplicationRecord
   has_many :post_comments, dependent: :destroy
   has_many :likes, dependent: :destroy
   
+  validates :title, presence: true
+  validates :content, presence: true
+  validates :recipe, presence: true
+  validates :method, presence: true
+  validates :image, presence: true
+
+  
   def get_image(width, height)
     unless image.attached?
       file_path = Rails.root.join('app/assets/images/no_image.jpg')

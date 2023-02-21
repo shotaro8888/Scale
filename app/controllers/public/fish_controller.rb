@@ -6,7 +6,7 @@ class Public::FishController < ApplicationController
   
   def show
     @fish = Fish.find(params[:id])
-    @posts = Post.all
+    @posts = @fish.posts
   end
   
 end
