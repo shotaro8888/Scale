@@ -112,6 +112,7 @@ ActiveRecord::Schema.define(version: 2023_02_16_071032) do
     t.string "last_name_kana"
     t.string "first_name_kana"
     t.string "telephone_number"
+    t.string "introduction"
     t.boolean "is_deleted", default: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false

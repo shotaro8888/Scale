@@ -36,6 +36,7 @@ class DeviseCreateUsers < ActiveRecord::Migration[6.1]
       t.string "last_name_kana"
       t.string "first_name_kana"
       t.string "telephone_number"
+      t.string "introduction"
       t.boolean "is_deleted", default: false
 
 
