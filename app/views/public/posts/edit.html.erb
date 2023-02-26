@@ -9,7 +9,7 @@
           <tr><th>レシピ</th><td><%= f.text_area :recipe %></td></tr>
           <tr><th>捌き方</th><td><%= f.text_area :method %></td></tr>
           <tr><th>画像</th><td><%= f.file_field :image, accept: "image/*" %></td></tr>
-          <tr><th><%= f.submit '変更を保存する' %></th><td></td></tr>
+          <tr><th><%= f.submit '変更を保存する', class: 'btn btn-md btn-success' %></th><td></td></tr>
         <% end %>
       </table>
     </div>
