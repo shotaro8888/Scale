@@ -9,7 +9,7 @@
         <% @fishes.each do |fish| %>
         <tbody>
           <tr>
-            <td><%= link_to fish_path(fish.id) do %><%= fish.fish_name %><% end %></td>
+            <td><%= link_to fish_path(fish.id), class: 'text-white' do %><%= fish.fish_name %><% end %></td>
           </tr>
         </tbody>
         <% end %>
