@@ -5,7 +5,9 @@
         <%= form_with model: @fish, url: admin_fish_path, method: :patch do |f| %>
           <tr><th>魚種ジャンル</th><td><%= f.collection_select :genre_id, Genre.all, :id, :name , { include_blank: '選択してください'}, {class: 'form-controll', required: true } %></td></tr>
           <tr><th>魚種名</th><td><%= f.text_field :fish_name %></td></tr>
-          <tr><th>説明</th><td><%= f.text_area :introduction, size: '40' %></td></tr>
+          <tr><th>豆知識</th><td><%= f.text_area :introduction, size: '40' %></td></tr>
+          <tr><th>旬</th><td><%= f.text_area :season, size: '40' %></td></tr>
+          <tr><th>おすすめの食べ方</th><td><%= f.text_area :recommendation, size: '40' %></td></tr>
           <tr><th>画像</th><td><%= f.file_field :image, accept: "image/*" %></td></tr>
           <tr><th><%= f.submit "変更を保存", class: 'btn btn-md btn-success' %></th><td></td></tr>
         <% end %>
