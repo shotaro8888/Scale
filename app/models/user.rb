@@ -21,6 +21,9 @@ class User < ApplicationRecord
       #user.confirmed_at = Time.now  # Confirmable を使用している場合は必要
       # 例えば name を入力必須としているならば， user.name = "ゲスト" なども必要
       user.last_name = "ゲスト"
+      user.first_name = "ログイン"
+      user.last_name_kana = "ゲスト"
+      user.first_name_kana = "ログイン"
     end
   end
   
