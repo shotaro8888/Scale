@@ -10,7 +10,6 @@
         <thead>
           <tr>
             <th>魚種名</th>
-            <th>説明</th>
             <th>画像</th>
             <th></th>
             <th></th>
@@ -20,7 +19,6 @@
         <tbody>
           <tr>
             <td><%= fish.fish_name %></td>
-            <td><%= fish.introduction %></td>
             <td><%= image_tag fish.get_image(100,100), class: "img-fluid" %></td>
             <td><%= link_to "編集", edit_admin_fish_path(fish.id), class: 'btn btn-md btn-info' %></td>
             <td><%= link_to "削除", admin_fish_path(fish.id), method: :delete, class: 'btn btn-md btn-danger' %></td>

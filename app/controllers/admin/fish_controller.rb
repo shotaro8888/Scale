@@ -36,6 +36,6 @@ class Admin::FishController < ApplicationController
   
 private
   def fish_params
-    params.require(:fish).permit(:genre_id, :fish_name, :introduction, :image)
+    params.require(:fish).permit(:genre_id, :fish_name, :introduction, :season, :recommendation, :image)
   end
 end
