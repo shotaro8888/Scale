@@ -6,9 +6,9 @@
   </div>
   <% if user == current_user %>
   <ul class="list-group list-group-flush">
-    <li class="list-group-item"><%= link_to "ユーザ情報を編集する", edit_user_path(current_user.id) %></li>
-    <li class="list-group-item"><%= link_to "新規投稿する", new_post_path %></li>
-    <li class="list-group-item"><%= link_to "いいねした投稿を見る", user_users_data_path(user.id) %></li>
+    <li class="list-group-item"><%= link_to "ユーザ情報を編集する", edit_user_path(current_user.id), class: 'text-dark' %></li>
+    <li class="list-group-item"><%= link_to "新規投稿する", new_post_path, class: 'text-dark' %></li>
+    <li class="list-group-item"><%= link_to "いいねした投稿を見る", user_users_data_path(user.id), class: 'text-dark' %></li>
   </ul>
   <% else %>
   <% end %>
