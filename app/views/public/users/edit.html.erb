@@ -5,20 +5,21 @@
       <%= render 'public/users/list', user: @user %>
     </div>
     
-    <div class="col-8">
+    <div class="col-8 mx-auto">
       <% if @user.email == 'guest@example.com' %>
         <p>ゲストユーザはユーザ情報の編集ができません。</p>
       <% else %>
-        <%= form_with model: @user, url: user_path, method: :patch do |f| %>
-        <div class="field"><%= f.label :last_name, "(姓)" %><%= f.text_field :last_name %><%= f.label :first_name, "(名)" %><%= f.text_field :first_name %></div>
-        <div class="field"><%= f.label :last_name_kana, "(セイ)" %><%= f.text_field :last_name_kana %><%= f.label :first_name_kana, "(メイ)" %><%= f.text_field :first_name_kana %></div>
-        <div class="field"><%= f.label :email, "メールアドレス" %><%= f.email_field :email, autofocus: true, autocomplete: "email" %></div>
-        <div class="field"><%= f.label :telephone_number, "電話番号" %><%= f.text_field :telephone_number %></div>
-        <div class="field"><%= f.label :introduction, "自己紹介" %><%= f.text_field :introduction %></div>
-        <div class="field"><%= f.label :profile_image, "プロフィール画像" %><%= f.file_field :profile_image, placeholder: "プロフィール画像", accept: "image/*" %></div>
-        <%= f.submit "編集内容を保存" %>
-        <% end %>
-      <% end %>
+        <table class="table table-striped table-dark">
+          <%= form_with model: @user, url: user_path, method: :patch do |f| %>
+            <tr><th>名前</th><td><%= f.label :last_name, "(姓)" %><%= f.text_field :last_name %><%= f.label :first_name, "(名)" %><%= f.text_field :first_name %></td></tr>
+            <tr><th>名前（カナ）</th><td><%= f.label :last_name_kana, "(セイ)" %><%= f.text_field :last_name_kana %><%= f.label :first_name_kana, "(メイ)" %><%= f.text_field :first_name_kana %></td></tr>
+            <tr><th>メールアドレス</th><td><%= f.label :email, "メールアドレス" %><%= f.email_field :email, autofocus: true, autocomplete: "email" %></td></tr>
+            <tr><th>電話番号</th><td><%= f.label :telephone_number, "電話番号" %><%= f.text_field :telephone_number %></td></tr>
+            <tr><th>自己紹介</th><td><%= f.label :introduction, "自己紹介" %><%= f.text_field :introduction %></td></tr>
+            <tr><th>プロフィール画像</th><td><%= f.label :profile_image, "プロフィール画像" %><%= f.file_field :profile_image, placeholder: "プロフィール画像", accept: "image/*" %></td></tr>
+            <tr><th><%= f.submit "編集内容を保存", class: 'btn btn-md btn-success' %></th><td></td></tr>
+          <% end %>
+        </table>
     </div>
   </div>
 </div>

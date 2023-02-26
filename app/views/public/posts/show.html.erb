@@ -16,7 +16,7 @@
         </div>
         <div class="ml-5">
           <% if @user == current_user %>
-            <%= link_to "編集する", edit_post_path(@post.id) %>
+            <%= link_to "編集する", edit_post_path(@post.id), class: 'btn btn-md btn-info' %>
           <% else %>
           <% end %>
           
