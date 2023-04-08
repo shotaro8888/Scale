@@ -14,7 +14,7 @@
           <tr><th>魚種</th><td><%= f.collection_select :fish_id, Fish.all, :id, :fish_name , { include_blank: '選択してください'}, {class: 'form-controll', required: true } %></td></tr>
           <tr><th>タイトル</th><td><%= f.text_field :title, size: 40 %></td></tr>
           <tr><th>内容</th><td><%= f.text_area :content, size: "50x5" %></td></tr>
-          <tr><th>レシピ</th><td><%= f.text_area :recipe, size: "50x4" %></td></tr>
+          <tr><th>レシピ</th><td><%= f.text_area :recipe, size: "50x5" %></td></tr>
           <tr><th>捌き方</th><td><%= f.text_area :method, size: "50x5" %></td></tr>
           <tr><th>画像</th><td><%= f.file_field :image, accept: "image/*" %></td></tr>
           <tr><th><%= f.submit "新規登録", class: 'btn btn-md btn-success' %></th><td></td></tr>
